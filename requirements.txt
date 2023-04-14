@@ -1,0 +1,7 @@
+feedparser
+nosexcover
+pycobertura
+pylint
+pytest
+pytest-cov
+cpplint
