@@ -22,5 +22,16 @@ pipeline {
 		}
       }
     }
+	stage("compilation"){
+		steps{
+			script{
+				versionpython.each {item ->
+					withPythonEnv("/usr/bin/${item}") {
+						sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+					}
+				}
+			}
+		}
+	}
   }
 }
