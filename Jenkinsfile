@@ -33,5 +33,17 @@ pipeline {
 			}
 		}
 	}
+	stage("tests"){
+		steps{
+			script{
+				versionpython.each {item ->
+					withPythonEnv("/usr/bin/${item}") {
+						sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
+						junit 'test-reports/results.xml'
+					}
+				}
+			}
+		}
+	}
   }
 }
